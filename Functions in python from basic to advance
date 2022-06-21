@@ -1,0 +1,1344 @@
+
+# 10-March-2022
+# --------------Functions-------------------
+
+# Syntax:
+# def <function_name>(parameter1,parameter2):
+
+
+# def myFunc(str):  #-------> Start of a function
+#     print(str)
+#     return str    #--------> End of the function
+#
+#
+# myFunc    #---> Calling of function
+
+
+# 1.
+# def sum(num1,num2):
+#      return num1+num2
+#
+# res = sum(12,13)
+# print(res)
+
+
+
+# def fun1():
+#     fun2()
+#     print("hello from fun1")
+#
+# def fun2():
+#     fun3()
+#     print("hello from fun2")
+#
+# def fun3():
+#     print("hello from fun3")
+#
+#
+# fun1()
+# print("hello from main")
+
+
+# Function with argument and without any return value
+# def sum(num1 , num2):
+#     print("sum=",num1+num2)
+#
+# sum(12,13)
+# print(sum(12,13))  # As we haven't returned any value i.e it will return none
+
+# This gives an error:
+# As 2nd function will be overwrited by the 1st:
+# And we haven't pass any arguments in the 2nd function
+# def sum(num1 , num2):
+#     print("sum=",num1+num2)
+#
+# def sum():
+#     num1=10
+#     num2=20
+#     return num1+num2
+#
+# sum(12,13)
+
+
+# This will not give any error
+# def sum():
+#     num1=10
+#     num2=20
+#     return num1+num2
+#
+# def sum(num1 , num2):
+#     print("sum=",num1+num2)
+#
+# sum(12,13)
+
+# with argument and with return type:
+
+# def sum(num1,num2):
+#             return num1+num2
+#
+# sum(12,13)
+# print(sum)
+
+
+# Pass by object reference
+# lst = ["Hello"]
+#
+# def test(val):
+#     val.append("World")
+#
+# print(lst)
+# test(lst)
+# print(lst)
+
+
+# lst = "Hello"
+#
+# def test(val):
+#     val += "World"  # As string is immutable i.e world will not be added
+#     print(lst)
+#
+#
+# print(lst)
+# test(lst)
+# print(lst)
+
+
+
+# lst = ["Hello"]
+#
+# def test(val):
+#     val=["World"]
+#
+#     return val
+#
+# print(lst,id(lst))
+# res=test(lst)
+# print(res,id(res))
+# print(lst,id(lst))
+
+# ---------********IMPORTANT*******-----------
+
+# lst = ["Hello"]
+#
+# def test(val):
+#     print(val,id(val))
+#     val=["world"]  # destroy after the function ends
+#     print(val,id(val))
+#
+# print(lst,id(lst))
+# test(lst)
+# print(lst,id(lst))
+
+
+# Local and Global scope
+
+# Local variable
+# Gives an error
+# def test():
+#
+#     var=100 # var destroys at the end of this function
+#     print(var)
+#
+# test()
+# print(var)
+
+
+# var=1000
+# def test():
+#
+#     var=100 # var destroys at the end of this function
+#     print(var,id(var))
+#
+# test()
+# print(var,id(var))
+
+
+# Global variable
+
+# var=1000
+#
+# def test():
+#     # Gives an error
+#     var+=1000 # without assigning any value to the var we are using assignment on the var
+#     print(var,id(var))
+#
+# test()
+# print(var,id(var))
+
+
+# var=1000
+# def test():
+#       var=1000
+#       var+=1000 # var destroys at the end of the function
+#       print(var,id(var))
+#
+# print(var,id(var))
+# test()
+# print(var,id(var))
+
+
+# Using global keyword
+# var=1000
+# def test():
+#       global var
+#       var+=1000
+#       print(var,id(var))
+#
+# print(var,id(var))
+# test()
+# print(var,id(var))
+
+
+# Function arguments:
+# 1. Mandatory Argument
+# 2. Optional  Argument
+# 3. Keyword   Argument
+# 4. Variadic Arguments(Variable length arguments) or varargs
+# 5. Keyword args or keyargs.
+
+#------------ Mandatory argument-----------
+# def greetMessage(name):
+#     print("Hello "+name)
+#
+# greetMessage("Luvkush")
+
+
+# Here fname is the mandatory argument
+
+# def greetMessage(fname,lname):
+#     print("Hello "+fname+lname)
+#     print(f"""
+#     firstname:{fname}
+#     lastname:{lname}
+#     """)
+#
+# greetMessage("Luvkush"," Sharma")
+
+# -------------Optional argument----------
+# where fname is mandatory and lname is optional
+# i.e after mandatory only optional arguments are left
+
+# def greetMessage(fname,lname="Na"):
+#     print("Hello "+fname+lname)
+#     print(f"""
+#     firstname:{fname}
+#     lastname:{lname}
+#     """)
+#
+# greetMessage("Luvkush")
+
+
+# def greetMessage(fname,lname,middlename):
+#     print(f"""
+#     firstname:{fname}
+#     middlename:{middlename}
+#     lastname:{lname}
+#     """)
+#
+# greetMessage("james","kumar","bond")
+
+
+# def greetMessage(fname,lname="Na",middlename="Na"):
+#     print(f"""
+#     firstname:{fname}
+#     middlename:{middlename}
+#     lastname:{lname}
+#     """)
+#
+# greetMessage("james")
+
+#------------ Keyword argument------------
+# Giving second argument in the second optional argument
+# def greetMessage(fname,middlename="Na",lname="Na"):
+#     print(f"""
+#     firstname:{fname}
+#     middlename:{middlename}
+#     lastname:{lname}
+#     """)
+#
+# greetMessage("james",lname="bond")
+
+
+# # Gives an error
+# # As we had given one argument less
+#
+# def greetMessage(middlename="Na",lname="Na",fname):
+#     print(f"""
+#     firstname:{fname}
+#     middlename:{middlename}
+#     lastname:{lname}
+#     """)
+#
+# greetMessage("james",lname="bond")
+
+
+# def greetMessage(fname,middlename="Na",lname="Na"):
+#     print(f"""
+#     firstname:{fname}
+#     middlename:{middlename}
+#     lastname:{lname}
+#     """)
+#
+# greetMessage("james","bond","kumar","mohit")
+
+
+# Gives an error
+# def greetMessage(fname,middlename="Na",lname="Na"):
+#     print(f"""
+#     firstname:{fname}
+#     middlename:{middlename}
+#     lastname:{lname}
+#     """)
+#
+# # If we are giving any value by the keyword argument then
+# # we also have to send the left arguments by keyword argument
+# # As in the middlename we had introduced the keyword argument
+# # but in the kumar we didn't used that
+
+# greetMessage("james",middlename="bond","kumar")
+
+
+
+
+# 12-March-2022 - (ONLINE SESSION)
+# Saturday
+
+# Functions: are the set of statements that perform a specific task.
+# dividing are problem into smaller parts which helps in the debugging.
+# they are usable.
+
+# Whenever we create a function then, a scope is introduced.
+# function having three variables
+# then a symbol table is created.
+# where a local scope is introduced and in this scope we have our  local variables and its values.
+
+#
+# def printname(fname,mname="",lname=""):
+#
+#  print(f"""
+# First Name:{fname}
+# Mid Name:{mname}
+# Last Nmae:{lname}""")
+#
+#
+# printname("james")
+#
+# # this below print will give an error
+# # As fname is created in the local scope of the function printname
+# # We cannot access that outside.
+#
+# print(fname)
+
+# For the function a new scope is created.
+
+
+# Creating a local variable inside if block
+# Here in Python we can access that local variable outside the if block also.
+# In python new scope creates whenever we create a function.
+
+"""
+if(True):
+    fname="James"
+
+print(fname) # We can access that variable even outside the if block.
+
+"""
+
+# As scope only creates whenever we create a new function
+# No scope is created in case of if and loop.
+# Here we had created a variable fname inside the if block.
+# And we are able to access that variable outside the if block also.
+
+"""
+if(True):
+    fname="James"
+
+def test():
+    print(fname)
+
+print("Printing fname outside the function:",test()) # As we didn't returned anything from the function i.e it will print None.
+print(fname)
+
+"""
+
+# Different scopes in the function and ouside the function.
+
+# Whenever we are printing a variable inside the function
+# Then IDE first checks that the printing variable is present in the local scope of that function or not.
+# If IDE unable to find the variable inside the local scope of that function then it checks that variable inside the
+# Container/Outer function of that local function.
+# And if IDE unable to find that variable in the outer function then it checks that in it's
+# local scope.
+# If IDE unable to find that in the local scope of the container function then it checks in the
+# Global scope.
+# And if IDE unable to find that variable in the Global scope then it finds that in the default memory area
+# i.e Built-in Scope. And if again IDE unable to find that variable in that scope also
+# then, IDE gives an error-->Name error.i.e variable is not made anywhere.
+
+# 1.Function scope ->>>Dominant first
+# 2.Enclosing Function Scope
+# 3.Global Scope
+# 4.Builtins Scope.---->>Last scope to check
+
+# Ex:
+
+"""
+# Global area
+def fun():
+    # Enclosing function scope
+    pass
+    def fun2(): 
+        # Function scope
+        pass
+
+"""
+
+
+# Arguments overloading Concept:--->
+
+"""
+# This gives an error
+
+def add(num1,num2):
+    print("sum of nums=",num1+num2)
+
+def add(num1,num2,num3):
+    print("sum of nums=",num1+num2+num3)
+
+def add(num1,num2,num3,num4):
+    print("sum of nums=",num1+num2+num3+num4)
+
+add(1,2,3) # Gives an error
+
+"""
+# Here we had passed 3 arguments But in the above code we can see
+# that there are 4 arguments maximum. i.e we have one less actual argument
+
+
+
+"""
+
+# But if we give 4 actual arguments then their will not be an error.
+def add(num1,num2):
+    print("sum of nums=",num1+num2)
+
+def add(num1,num2,num3):
+    print("sum of nums=",num1+num2+num3)
+
+def add(num1,num2,num3,num4):
+    print("sum of nums=",num1+num2+num3+num4)
+
+add(2,2,2,2)
+
+"""
+
+"""
+# But if we want the previous behaviour
+# i.e we will send less actual arguments as compare to the formal arguments
+# then we have to do this:
+# We will assign zeroes to that formal arguments
+# that we are not giving any actual arguments
+# i.e if we pass 3 arguments then we assign zero to the 4th formal argument.
+
+def add(num1,num2):
+    print("sum of nums=",num1+num2)
+
+def add(num1,num2,num3):
+    print("sum of nums=",num1+num2+num3)
+
+def add(num1,num2,num3,num4=0): # Assigning zero to the 4th argument
+    print("sum of nums=",num1+num2+num3+num4)
+
+add(2,2,3)
+
+"""
+
+
+"""
+# And if we pass 4 actual arguments then zero will be overwrited by that argument
+# Ex:
+
+def add(num1,num2):
+    print("sum of nums=",num1+num2)
+
+def add(num1,num2,num3):
+    print("sum of nums=",num1+num2+num3)
+
+def add(num1,num2,num3,num4=0):
+    print("sum of nums=",num1+num2+num3+num4)
+
+add(2,2,3,10)
+"""
+
+
+"""
+def add(num1,num2):
+    print("sum of nums=",num1+num2)
+
+def add(num1,num2,num3=0):
+    print("sum of nums=",num1+num2+num3)
+
+def add(num1,num2,num3=0,num4=0):
+    print("sum of nums=",num1+num2+num3+num4)
+
+add(2,2)
+
+# If we specify the 3rd and 4th argument then zero will be overwrited.
+Note---->This function will be work for minimum 2 arguments.
+# And maximum 4 arguments.
+# So, by this we can resolve the overloading.
+
+"""
+
+"""
+def add(num1,num2):
+    print("sum of nums=",num1+num2)
+
+def add(num1,num2,num3):
+    print("sum of nums=",num1+num2+num3)
+
+add(5,5,5) #If we pass 4 arguments here then it will give an error
+
+def add(num1,num2,num3=0,num4=0):
+    print("sum of nums=",num1+num2+num3+num4)
+
+add(2,2,2,2)
+
+"""
+
+
+
+# Actual Arguments: The arguments that are passed in a function call are called actual arguments.
+# These arguments are defined in the calling function.
+
+# Formal arguments:The formal arguments are the parameters/arguments in a function declaration. The
+# Scope of formal arguments is local to the function definition.
+
+# Variadic Arguments:
+
+# As for n number of actual arguments we requires n formal arguments
+# But by the variadic arguments we pass n actual arguments storing in the one formal argument.
+# i.e we donot know that user had passed how many arguments.
+# Then we use variadic arguments.
+# Note-->print() can takes n number of arguments.
+
+# Method-1:
+# In this method we will pass a single object
+
+"""
+def test(arr):
+    sum=0
+    for i in arr:
+         sum+=i
+
+    print("result=",sum)
+
+#  Passing a lists as an argument i.e as an single argument .
+test([2,2,2,2])
+
+"""
+# -------------**********IMPORTANT***********----------------------
+
+# var-arg:
+# placing a  "*" in the pre of the formal argument works as an var-arg
+# i.e if we are passing n number of actual arguments not as a single object
+# Then we use *(formal_argument).
+# And it forms a tuple.
+# and that tuple can store n number of arguments at the run time.
+
+# Ex:
+"""
+def test(*arr): #Note---> this will initialize only one time
+    sum=0
+    for i in arr:
+         sum+=i
+
+    print("result=",sum)
+
+#  Passing 10 actual arguments .
+test(5,5,5,5,5,5,5,5,5,5)
+"""
+
+
+"""
+def test(*arr):
+    print(arr)
+
+test() # function calling with zero arguments sending
+test(1)
+test(1,2)
+test(1,2,3)
+test(2,2,2,2,2)
+test(3,4,5,6,7,8,9,1,2,3,4) # taking n number of arguments
+
+"""
+
+"""
+def test(*arr):
+    print("sum=",sum(arr))
+
+test() # function calling with zero arguments sending
+test(1)
+test(1,2)
+test(1,2,3)
+test(2,2,2,2,2)
+test(3,4,5,6,7,8,9,1,2,3,4) # taking n number of arguments
+
+"""
+
+"""
+
+# This will give an error
+# As all the actual arguments will go to the vararg
+# And num will not get any argument
+# so if we are printing num then it will through an error
+# Nature of vararg is hungry.
+# it will take all the arguments
+
+def test(*vararg,num):
+    print(vararg)
+    # print(num)
+
+test(5,10,15,25,24,67,13)
+"""
+
+"""
+# Now 1-argument will go to the num and the left goes to the vararg
+
+def test(num,*vararg):
+    print(num)
+    print(vararg)
+
+test(5,10,15,25,24,67,13)
+
+"""
+
+"""
+def test(num,*vararg,num2=10):
+    print(num)
+    print(vararg)
+    print(num2)
+
+test(5,10,15,25)
+
+"""
+
+"""
+# Using Keyword only argument
+def test(num,*vararg,num2=10):
+    print(num)
+    print(vararg)
+    print(num2)
+
+test(5,10,15,25,num2=100000)
+
+"""
+
+# So, sequence of taking arguments:
+# Mandatory argument.
+# variable length argument(vararg).
+# Keyword only argument.
+
+# Optional argument:
+# def test(num,opt=345,*vararg,num2=10):
+#     print(num)
+#     print(opt)
+#     print(vararg)
+#     print(num2)
+#
+# test(5,10,15,25,num2=100000)
+
+# -----------********IMPORTANT**********-------
+
+
+# Passing n number of keyword arguments:-
+
+# This will give an error
+# As we didin't pass positional arguments
+# We had passed keyword Arguments
+#
+# def test(*vararg):
+#     print(vararg)
+#
+# test(a=10,b=20,c=30,d=40)
+
+# for passing n number of keyword arguments we use
+# double asterisks i.e (**vararg)
+
+# Ex:
+# Here double asterisks maintains a dictionary of the keyword arguments
+# Note---> single asterisks i.e (*vararg) works only in case of positional arguments.
+
+# def test(**keyvararg):
+#     print(keyvararg)
+#
+# test(a=10,b=20,c=30,d=40)
+
+# Printing both vararg and keyvararg simultaneously
+# def test(*vararg,**keyvararg):
+#     print(vararg)
+#     print(keyvararg)
+#
+# test(10,20,30,a=10,b=20,c=30,d=40)
+
+# Hence:
+# vararg or single asterisks converts n number of arguments into tuple at the run time
+# Whereas, keyvararg coverts n number of arguments into a dictionary at the run time.
+
+"""
+
+
+"""
+"""
+# summation of the values of the keyvararg arguments:
+def test(*vararg,**keyvararg):
+    print(vararg)
+    print(keyvararg)
+    print("sum of members is:",sum(keyvararg.values())) # using sum function and .value method to get the values only from the dictionary
+
+test(10,20,30,a=10,b=20,c=30,d=40)
+
+"""
+
+"""
+# specifying all types of arguments:
+def test(mandatory, *varg, keyword_only_argument=4 , **kvarg):
+             print(mandatory,varg,keyword_only_argument,kvarg,sep="\n") # Here sep is also a keyword argument.
+             
+#print after using one value uses to vararg to print the values
+
+test(1,2,3,a=10,b=20,c=30,keyword_only_argument=3000)
+
+"""
+
+# So order to access the arguments:
+# 1. Mandatory
+# 2. Optional (if given)
+# 3. Varg
+# 4. Keyword only argument
+# 5. Kvarg
+
+
+"""
+# Note:- In keyword arguments order of sending the arguments is not mandatory
+# Ex:-
+def fun(a,b,c):
+    print(a,b,c)
+fun(b=2, c=3, a=1)
+
+"""
+
+
+
+# def greetMessage():
+#
+#     return "Hello User"
+#
+# res = greetMessage() # storing the return value of the greetMessage to res.
+# print(res) # reference to the function
+
+
+
+"""
+def greetMessage():
+    return "Hello User"
+
+res = greetMessage # res is storing the reference of the greetMessage
+print(res) 
+
+"""
+
+"""
+def greetMessage():
+
+    return "Hello User"
+
+res = greetMessage
+# # Now works the same as greetMessage works
+# # Assigning the reference of the function to res
+print(res())  # variable pointing to the function
+"""
+
+
+
+# Note:-
+# So, by default if we call the function then we use paranthesis-->() after the function name
+# But if we are not giving paranthesis-->() then it means we are assigning the reference of that function to another variable.
+# i.e giving greetMessage id to the res variable.
+# Now id of both greetMessage and res will be same.
+
+
+# def greetMessage(name):
+#        return "Hello ",name
+#
+# res=greetMessage # Giving id of greetMessage to the res
+# print(res("james")) # calling res now giving james as an argument.
+
+
+
+# # Advantage of above approach:-
+# # We can send whole function as an argument in the other function.
+# # i.e we can pass whole functionality to other function.
+
+
+
+# Passing function as an argument into the another function
+#
+# def fun():
+#     print("hello")
+#
+# def test(temp): # temp stores the "fun" function's id
+#     fun()
+#
+# fun() # calling fun directly
+# test(fun) # Passing function as an argument into another function
+
+
+# def test():
+#     def fun():
+#         print("hello in the fun")
+#     return fun # returning address/reference  of the fun in res
+#
+# res=test() # res will store the id/reference of the function fun
+# res() # calling res or we can say that calling fun function.
+
+
+
+
+# def greetmessage():
+#     return "Hello"
+#
+# def test(fun): # fun stores the id of greetmessage
+#     print(fun()) # Now calling fun is same as calling greetmessage function.
+#     return fun
+#
+# print(greetmessage())
+# res=test(greetmessage) # Giving id of greetmessage as an argument in the test function
+# print(res())
+
+
+
+# 15-March-2022 (Day Before Holi Holidays)-ONLINE SESSION
+
+# # 1. Passing Function as an argument
+# def greetMessage():
+#     print("Hello World")
+#
+# def dec(gMsg):
+#     gMsg()
+#     return gMsg # returning the reference of the greetMessage
+#
+# greetMessage()
+# res = dec(greetMessage) # res will store the reference of the greetMessage
+# res() # same as calling greetMessage
+
+# 2. Nested Functions
+# Function within a function is known to  be the closure
+# M-1
+
+# def OuterFun():
+#     print("Hello from Outer function")
+#     def InnerFun():
+#         print("Hello from Inner function")
+#
+#     InnerFun()
+#
+# OuterFun()
+# # InnerFun() # Gives an Name error as we are accessing the local function
+
+
+# M-2 calling local function
+# def OuterFun():
+#     print("Hello from Outer function")
+#
+#     def InnerFun():
+#         print("Hello from Inner function")
+#     #     This local function will destroy i.e
+#     #      We will return the reference of this function to call this
+#
+#     return InnerFun # returning the reference of the InnerFun
+#
+# OuterFun()
+# # InnerFun() # Gives an Name error as we are accessing the local function
+#
+# res = OuterFun()
+# res() # Calling InnerFun
+
+# Hence , we have to return the Nested or the local function to access it
+# As all the variables of that local function will get destroyed
+
+
+# --------****** LAMBDA FUNCTION ******---------
+
+# Makes our function more concise, easy to write and read
+# If we want to call the function only once.
+# These function donot have any name i.e they are called Anonymous function.
+# Anonymous Lambda function can be defined using the keyword lambda.
+
+# Few constraints that we have to follow:-
+
+# 1. They are syntactically restricted to a single expression (i.e they are one-line functions.)
+# 2. Lambda functions cannot contain commands(ex-print is not allowed we can do only calculations.), and they cannot contain more than one expression.
+# 3. Lambda function can take any number of arguments(including optional arguments) and returns the value of a single expression.
+
+
+#  No return keyword is used to return the value.
+
+# Converting a Normal function into lambda function.
+#
+
+
+# print(lambda num:num**3) # this will print the id of this lambda function.
+# To call the lambda function we will store the id in a variable and then call the function.
+
+# Actual use of lambda function when we have to do one time calling
+# cube=lambda num: num**3 # num**3 returns to cube
+# print(cube(int(input("Enter the number:"))))
+
+# (function_name)(argument_passing)
+# print((lambda num:num**3)(6)) # Function without name # One time requirement
+#
+# print((lambda num,pow:num**pow)(3,2))
+
+"""
+
+"""
+# Sorting the list according to the length of the name.
+# lst=["james","kimberlee","ana","king","neena","paul"]
+# lst.sort(key=len,reverse=True) # storing the reference of len into key
+# print(lst)
+
+# Sorting the list according to the last character of the name.
+# Callback function.
+# lst=["james","kimberlee","ana","king","neena","paul"]
+#
+# def lastchar(name): # We donot require this function again and again
+#     return name[-1]
+# lst.sort(key=lastchar) # storing the reference of lastchar into key
+# print(lst)
+
+# As ana has last char as a which comes first
+
+
+
+
+# As we do not require the above functions again and again i.e we use lambda in these cases.
+# Creating a function at top level is not a good practise.
+
+# lst=["james","kimberlee","ana","king","neena","paul"]
+# lst.sort(key=lambda n:n[-1]) # Here we can use this function only here
+# print(lst)
+
+# Note:- By default key used to get the logic for the sorting in the .sort() method.
+
+
+
+
+# lst=[lambda num1,num2:num1+num2,
+#      lambda num1,num2:num1-num2,
+#      lambda num1,num2:num1*num2,
+#      lambda num1,num2:num1//num2,
+#      lambda num1,num2:num1%num2,
+#      lambda num1,num2:num1**num2,]
+#
+# n1=int(input("Enter the first number:"))
+# n2=int(input("Enter the second number:"))
+#
+#
+# for ref in lst:
+#     print(ref(n1,n2))
+
+
+
+# print([i for i in range(1000)])
+# Lists comprehension is not memory efficient
+
+
+#  GENERATORS:
+# Like if we want water from the tap then turn the tap on and whenever not required we close the tap
+# Similar work is done by the generators.
+
+# ------***IMPORTANT***------
+# We have lists,dictionary comprehensions.
+# But we didn't have tuple comprehension.
+# In place of tuple comprehension we have generators.
+
+# print((i for i in range(1000))) # It will print the reference of the generator and tell that i had created a generator operator
+
+# To get the value we have to store it's reference in the variable.
+# res=(i for i in range(1000))
+# print(res) # still it will print the reference
+
+# so to print the value we use next() function
+# res=(i for i in range(1000))
+# Jitni value chaiye utni baar next ko call karo
+# print(next(res))
+# print(next(res))
+# print(next(res))
+# print(next(res))
+# print(next(res))
+#
+# for i in range(10):
+#     print(next(res))
+
+# Hence generator is the memory efficient
+
+# If we use generators two times then it will give an error
+# Generators is for use and through
+# res=(i for i in range(5))
+# for i in range(5):
+#     print(next(res))
+
+
+
+
+# Creating a function that gives infinite even numbers
+
+# def even():
+#     num=2
+#     while True:
+#         return num # Below statement will not run as we had returned the num.
+#         num+=2
+#
+# for i in range(10):
+#     print(even(),end=" ")
+
+
+# def even():
+#     num=2
+#     while True:
+#         yield num # yield gives power to the function jisse ki num apni previous value ko yaad rakhega
+#         # yield behaviour is same as static in C
+#         num+=2
+#
+# # We cannot call the function directly now.
+# for i in range(10):
+#     print(even(),end=" ")
+
+# res=even() # Taking the reference of the yield aur ye apni previous value ko yaad rakhega
+
+# for i in range(10):
+#     print(next(res),end=" ")
+#
+# print()
+# for i in range(10):
+#     print(next(res),end=" ")
+#
+# print()
+# for i in range(10):
+#     print(next(res),end=" ")
+
+
+
+
+# 23-02-22 Wednesday(First day after Holi)
+
+# Recursion
+
+# If we can divide a problem to smaller sub problems.
+# Design an algo to compute nth
+# The prominent use of recursion in datastructures like trees and graphs
+# It is used in many algo(divide and conquer,greedy and dynamic programming)
+
+# Basic structure of recursion
+# def recMethod(arg):
+#     if exit from condition satisfied:
+#             return some value
+#     else:
+#         recMethod(modified args)
+
+#   Ex:
+# def opendoll(doll):
+#     if doll==1: # Base condition
+# # If we donot give base condition then it will run till stackoverflow
+#         print("All dolls are open")
+#     else:
+#         print(f"doll no. {doll} is open")
+#         opendoll(doll-1)
+#
+# opendoll(5)
+
+
+# import sys
+# sys.setrecursionlimit(2000)
+# def opendoll(doll):
+#     if doll==1: # Base condition or the terminating condition
+# # If we donot give base condition then it will run till stackoverflow or infinitely
+#         print("All dolls are open")
+#     else:
+#         print(f"doll no. {doll} is open")
+#         opendoll(doll-1)
+#
+# opendoll(5)
+
+#---------****IMPORTANT****-------------
+# Ex:- Must run on pythontutor.com
+# def recMethod(num):
+#     if num<1: # Base condition
+#         print("num is less than 1")
+#     else:
+#         recMethod(num-1) # Recursive condition
+# # Recursion uses stack to store the values
+# # Like here stack will first store 4 at the bottom then 3 then 2 then 1 and then popping of elements will be done
+#         print(num) # printing will done after unbinding i.e when num=0
+#
+# recMethod(4)
+
+
+# def recMethod(num):
+#     if num<1: # Base condition
+#         print("num is less than 1")
+#     else:
+#         recMethod(num-1)
+#         print(num)
+#         recMethod(num-1)
+# recMethod(4)
+
+
+# def pw(num):
+#     if num==0:
+#         return 1
+#     else:
+#         power=pw(num-1)
+#         return power*2
+#
+# res=pw(3)
+# print(res)
+
+# This gives an error as we didn't gave an base condition
+# def facto(num):
+#     return num*facto(num-1)
+#
+# print(facto(5))
+
+
+# def facto(num):
+#     if num in[0,1]:
+#         return 1
+#     return num*facto(num-1)
+#
+# print(facto(5)) # But if we pass floating point and negative value then it will not work
+
+# def facto(num):
+#     assert num>0 and int(num)==num,"only +ve ints are allowed" # this will work for floating point and negative values
+#     # # "only +ve ints are allowed" we write this when we have to display the error.
+#     if num in[0,1]:
+#         return 1
+#     return num*facto(num-1)
+#
+# print(facto(3.1))
+
+
+# Fibonacci series By recursion
+# 0 1 1 2 3 5...
+
+# Recursive case: f(n)= f(n-1) + f(n-2)
+# Base case:- 0 and 1
+
+# This code takes a lot time for more values of num.
+
+# def fibo(num):
+#     if num in [0,1]:
+#         return num
+#     return fibo(num-1)+fibo(num-2)
+#
+# for i in range(20):
+#     print(fibo(i),end=" ") # for num=0 and 1 if condition runs
+
+        # For num=2 tree forms:-
+        #     f(2)
+        # f(1)     f(0)
+
+#  For num=4 tree forms
+#               f(4)
+#     f(3)                   f(2)
+# f(2)       f(1)       f(1)        f(0)
+# f(1)  f(0)
+
+# If we give num=40 i.e range(40) then it takes a lot time to give the output
+# If we give num=200 i.e range(200) then it takes a lot time to give the output
+
+#  For this we use :-
+#  Decorator
+
+# #-------------*******Decorator********------------
+# # "Memoization technique" is a method used to store the results of previous function calls to speed up future calculations.
+# def msg():
+#     return "Hello World"
+#
+# def makeBold(msg): # Decorator
+#     def boldLogic():
+#         return "<b>"+msg()+"</b>"  # </b>--> BOLD TAG to decorate the string
+#     return boldLogic # it will return the reference of the boldLogic
+#
+# print(msg())
+#
+# msg=makeBold(msg) # boldLogic reference goes to the msg
+# print(msg()) # As IDE donot bolds the string as it will be done in the web Browser
+
+
+
+# def msg():
+#     return "Hello World"
+#
+# def makeItalic(msg): # Decorator
+#     def italicLogic():
+#         return "<i>"+msg()+"</i>"  # </b>--> BOLD TAG to decorate the string
+#     return italicLogic # it will return the reference of the boldLogic
+#
+# print(msg())
+#
+# msg=makeItalic(msg) # italicLogic reference goes to the msg
+# print(msg())
+
+
+
+# ---IMPORTANT
+# Using '@' to make a function as a decorator.
+"""
+# def makeBold(msg): # Decorator
+#     def boldLogic():
+#         return "<b>"+msg()+"</b>"  # </b>--> BOLD TAG to decorate the string
+#     return boldLogic
+# 
+# 
+# def makeItalic(msg): # Decorator
+#     def italicLogic():
+#         return "<i>"+msg()+"</i>"  # <i>--> Italic TAG to decorate the string
+#     return italicLogic
+# 
+# @makeBold
+# @makeItalic
+# # using @ makes our function as the decorator
+# # so that we can use them anywhere
+# def msg(): # decorator near to the msg will run first.
+#     return "Hello world"
+# 
+# print(msg())
+
+"""
+
+
+
+
+# Making Decorator for the fibonacci series so that recursion gives the output fast:-
+# It will store the the already generated fibo into the dictionary
+# And whenever we requires the fibo of a number and it is being stored in the dictionary then we will take it from that
+# Otherwise compute it through the fibo function and store it into the dictionary then take it from the dictionary
+
+# def fibodec(fibo): # Decorator
+#     dictionary={} # global dictionary
+#     def fibologic(num):
+#         if num not in dictionary:
+#             dictionary[num]=fibo(num)
+#         return dictionary[num]
+#     return fibologic
+#
+#
+# @fibodec # Making fibodec as a decorator
+# def fibo(num):
+#     if num in [0,1]:
+#         return num
+#     return fibo(num-1)+fibo(num-2)
+#
+# for i in range(100):
+#     print(fibo(i),end=" ")
+    
+"""
+
+# num=10
+# def outer():
+#     num=100
+#     def inner():
+#         num=1000
+#         print(num)
+#     inner()
+#     print(num)
+# outer()
+# print(num)
+
+# if we want to change the global variable's value then we use global
+
+# num=10
+# def outer():
+#     num=100
+#     def inner():
+#         global num
+#         num=1000
+#         print(num)
+#     inner()
+#     print(num)
+# outer()
+# print(num)
+
+# non-local: When we are making the nested function
+# num=10
+# def outer():
+#     num=100
+#     def inner():
+#         nonlocal num
+#         num=1000
+#         print(num)
+#     inner()
+#     print(num)
+# outer()
+# print(num)
+
+
+# def test():
+#     """
+#     # This is a demo function
+#     """
+#     print(test.val)
+#     pass
+#
+# # Built-in attributes
+# print(test.__name__)
+# print(test.__doc__) # It gives the docstring inside the function
+# print(test.__module__)
+#
+# # Adding a attribute with the function
+# test.val=100 # Giving test function a attribute as val
+# test()
+
+
+
+# def test():
+#     i=10
+#     print(i)
+#     i+=1
+#     pass
+#
+# test()
+# test()
+# test()
+# test()
+
+# def test():
+#     i=10
+#     print(test.i)
+#     test.i+=1
+#
+# test.i=100
+# test()
+# test()
+# test()
+
+
+# st="james"
+# print(st.upper())
+#
+# # str.upper(self) where self is string that we had made and in which we have to do changes
+# res=str.upper(st)
+# print(res)
+
+
+# d={"r":"red","g":"green"}
+# d2=d.fromkeys(d)
+# print(d2)
+# d3=dict.fromkeys(d)
+# print(d3)
+# d4=dict.fromkeys(d," ")
+# print(d4)
+# d5=dict.fromkeys(d,"===")
+# print(d5)
