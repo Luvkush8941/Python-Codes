@@ -1,0 +1,35 @@
+N,M = input().split()
+N = int(N)
+M = int(M)
+pattern_repeat = N - 2
+count = N // 2
+
+# calculating the repeatation of .|.
+
+forward = []
+for i in range(N):
+    if i % 2 !=0:
+        forward.append(i)
+
+# --------- Above WELCOME part ----------
+
+for i in range(count):
+    text = ".|." *forward[i] 
+    x = text.center(M,"-")
+    print(x)
+    
+# --------- Middle Part ----------
+
+wel = "WELCOME"
+x = wel.center(M,"-")
+print(x)
+
+# --------- Bottom WELCOME part ----------
+
+backward  = forward[::-1]
+for i in range(count):
+    text = ".|." *backward[i] 
+    x = text.center(M,"-")
+    print(x)
+
+
